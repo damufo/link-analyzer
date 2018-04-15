@@ -1,0 +1,9 @@
+
+
+Version 2.0 - 2018-04-15
+Add analysis for local files file://
+Add localization
+Removed option dynamic navigation
+Removed console (status bar)
+Renamed funcions
+

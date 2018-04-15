@@ -1,0 +1,7 @@
+
+
+Add shortcuts as extensión copy_plaintext
+Add restore defaults
+Add panel button to preferences
+Engadir agradecementos en información.
+Engadir personalizado tamaño fonte para popup

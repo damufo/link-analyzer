@@ -1,0 +1,14 @@
+
+
+Acknowledgments
+
+    Mozilla Addon Pinger:
+        Jan Janetka
+        https://addons.mozilla.org/es/firefox/user/jan-janetka/
+        by the code base in content section
+        
+
+    Mozilla Addon Simple Translate 
+        Sienori
+        https://addons.mozilla.org/en-US/firefox/user/sienori/
+        by the code base in options section

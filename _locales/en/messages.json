@@ -1,0 +1,59 @@
+{
+  "extensionName": { "message": "Link Analyzer" },
+  "extensionDescription": { "message": "Analyze the status of the links in a complete webpage or in selected text." },
+  "menuAll": { "message": "Analyze all links" },
+  "menuSel": { "message": "Analyze the links in the selection" },
+
+  "settingsLabel": { "message": "Configuration" },
+  "informationLabel": { "message": "Information" },
+  "generalLabel": { "message": "General" },
+
+  "showStatsLabel": { "message": "Show statistics after analysis is done?" },
+  "showStatsCaptionLabel": { "message": "When it is finished, open a popup window with the results of the analysis" },
+  "highlightedLinksLabel": { "message": "Highlight of links analyzed" },
+  "linksFineLabel": { "message": "Fine Links" },
+  "linksFineCaptionLabel": { "message": "Color to highlight links that work." },
+  "linksBrokenLabel": { "message": "Broken Links" },
+  "linksBrokenCaptionLabel": { "message": "Color to highlight broken links." },
+  "linksTimeOutLabel": { "message": "Timed Out Links" },
+  "linksTimeOutCaptionLabel": { "message": "Color to highlight links that didn't return any header for long time" },
+  "linksSkippedLabel": { "message": "Skipped links" },
+  "linkSkippedCaptionLabel": { "message": "Highlight color for links we won't analyzed" },
+  "linksInvalidLabel": { "message": "Invalid Links" },
+  "linksInvalidCaptionLabel": { "message": "Highlight color for links that returned header, but it wasn't http/https header" },
+  "secondsTimeOutLabel": { "message": "Time out (in seconds)" },
+
+  "advancedLabel": { "message": "Advanced" },
+  "whatTagsShouldCheckLabel": { "message": "What xHTML tags should to analyze?" },
+  "anchor": { "message": "Anchor" },
+  "option": { "message": "Option" },
+  "area": { "message": "Area" },
+  "hintsToRecongnizeLabel": { "message": "Hints to recognize link to omit" },
+  "hintsToRecongnizeCaptionLabel": { "message": "Separate by ','" },
+
+  "versionLabel": { "message": "Version" },
+  "licenseLabel": { "message": "License" },
+  "licenseCaptionLabel": { "message": "Mozilla Public License, Version. 2.0" },
+  "donationLabel": { "message": "Please make a donation" },
+  "donationCaptionLabel": { "message": "Thank you for using Link Analyzer.<br>Your support will be a big encouragement, as I continue to develop the add-on.<br>If you like Link Analyzer, I would be pleased if you could consider donating." },
+  "addonPageLabel": { "message": "Add-on page" },
+  "addonUrl": {
+          "message": "https:\/\/addons.mozilla.org\/en-US\/firefox\/addon\/link-analyer\/?src=optionpage"
+      },
+
+  "errorCheck": { "message": "Link analyzer failed" },
+  "about": { "message": "About" },
+  "amo":  { "message": "Firefox restricts some functions on some URLs" },
+  "error": { "message": "There was an error with the operation" },
+  "help": { "message": "Help" },
+
+  "testDuration": { "message": "Analysis duration" },
+  "linksFinePopup": { "message": "The link returned a code between 200 and 300, meaning it's ok." },
+  "linksBrokenPopup": { "message": "The link returned code was either 404, or some of other 'can't get here'." },
+  "linksTimeOutPopup": { "message": "The link has {secondsTimeOut} seconds to open and return header. But one didn't make it." },
+  "linksInvalidPopup": { "message": "The link didn't return any valid header. Either is server down, or it's redirecting to protocols others than not valid." },
+  "linksSkippedPopup": { "message": "The link wasn't tested. It can be either anchor to this page (\"#\"), or javascript, etc..." },
+
+  "seconds": { "message": "seconds" },
+  "restoreDefaultValues": { "message": "Restore default values" }
+}

@@ -1,0 +1,56 @@
+{
+
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "author": "damufo",
+  "version": "2.0.0",
+
+  "homepage_url": "https://github.com/damufo/link-analyzer",
+
+  "icons": {
+    "16": "icons/icon-app.svg",
+    "32": "icons/icon-app.svg",
+    "48": "icons/icon-app.svg",
+    "96": "icons/icon-app.svg",
+    "128": "icons/icon-app.svg"
+  },
+
+  "permissions": [
+    "<all_urls>",
+    "contextMenus",
+    "notifications",
+    "storage"
+  ],
+
+  "background": {
+    "scripts": [
+      "background/background-script.js"
+    ]
+  },
+
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content/content-script.js"]
+  }],
+
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+
+  "commands": {
+    "check-all": {
+      "suggested_key": {
+        "default": "F7"
+      }
+    },
+    "check-sel": {
+      "suggested_key": {
+        "default": "Shift+F7"
+      }
+    }
+  },
+
+  "default_locale": "en"
+}
