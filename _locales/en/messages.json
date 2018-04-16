@@ -22,12 +22,13 @@
   "linksInvalidLabel": { "message": "Invalid Links" },
   "linksInvalidCaptionLabel": { "message": "Highlight color for links that returned header, but it wasn't http/https header" },
   "secondsTimeOutLabel": { "message": "Time out (in seconds)" },
+  "secondsTimeOutCaptionLabel": { "message": "How many seconds before we say this link has timed out" },
 
   "advancedLabel": { "message": "Advanced" },
   "whatTagsShouldCheckLabel": { "message": "What xHTML tags should to analyze?" },
-  "anchor": { "message": "Anchor" },
-  "option": { "message": "Option" },
-  "area": { "message": "Area" },
+  "anchorLabel": { "message": "Anchor" },
+  "optionLabel": { "message": "Option" },
+  "areaLabel": { "message": "Area" },
   "hintsToRecongnizeLabel": { "message": "Hints to recognize link to omit" },
   "hintsToRecongnizeCaptionLabel": { "message": "Separate by ','" },
 
@@ -38,7 +39,7 @@
   "donationCaptionLabel": { "message": "Thank you for using Link Analyzer.<br>Your support will be a big encouragement, as I continue to develop the add-on.<br>If you like Link Analyzer, I would be pleased if you could consider donating." },
   "addonPageLabel": { "message": "Add-on page" },
   "addonUrl": {
-          "message": "https:\/\/addons.mozilla.org\/en-US\/firefox\/addon\/link-analyer\/?src=optionpage"
+          "message": "https:\/\/addons.mozilla.org\/en-US\/firefox\/addon\/link-analyzer\/?src=optionpage"
       },
 
   "errorCheck": { "message": "Link analyzer failed" },
@@ -52,7 +53,7 @@
   "linksBrokenPopup": { "message": "The link returned code was either 404, or some of other 'can't get here'." },
   "linksTimeOutPopup": { "message": "The link has {secondsTimeOut} seconds to open and return header. But one didn't make it." },
   "linksInvalidPopup": { "message": "The link didn't return any valid header. Either is server down, or it's redirecting to protocols others than not valid." },
-  "linksSkippedPopup": { "message": "The link wasn't tested. It can be either anchor to this page (\"#\"), or javascript, etc..." },
+  "linksSkippedPopup": { "message": "The link wasn't tested. It can be either anchor to this page (#), or javascript, etc..." },
 
   "seconds": { "message": "seconds" },
   "restoreDefaultValues": { "message": "Restore default values" }

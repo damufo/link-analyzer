@@ -8,6 +8,12 @@
 
   "homepage_url": "https://github.com/damufo/link-analyzer",
 
+  "applications": {
+    "gecko": {
+        "id": "link-analyzer@damufo"
+    }
+  },
+
   "icons": {
     "16": "icons/icon-app.svg",
     "32": "icons/icon-app.svg",

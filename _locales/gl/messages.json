@@ -1,8 +1,8 @@
 {
   "extensionName": { "message": "Link Analyzer" },
   "extensionDescription": { "message": "Analiza o estado das ligazóns nunha páxina completa ou nunha selección de texto." },
-  "menuAll": { "message": "Analiza todas as ligazóns" },
-  "menuSel": { "message": "Analyze as ligazóns da selección" },
+  "menuAll": { "message": "Analizar todas as ligazóns" },
+  "menuSel": { "message": "Analizar as ligazóns da selección" },
 
   "settingsLabel": { "message": "Configuración" },
   "informationLabel": { "message": "Información" },
@@ -22,12 +22,13 @@
   "linksInvalidLabel": { "message": "Ligazóns incorrectas" },
   "linksInvalidCaptionLabel": { "message": "Cor para realzar as ligazóns que devolveron unha cabeceira, pero esta non foi http/https/file" },
   "secondsTimeOutLabel": { "message": "Tempo de espera (en segundos)" },
+  "secondsTimeOutCaptionLabel": { "message": "Cantos segundos antes de dicir que esta ligazón esgotou o tempo de espera" },
 
   "advancedLabel": { "message": "Avanzado" },
   "whatTagsShouldCheckLabel": { "message": "Que etiquedas xHTML debería analizar?" },
-  "anchor": { "message": "Ancora" },
-  "option": { "message": "Opción" },
-  "area": { "message": "Área" },
+  "anchorLabel": { "message": "Ancora" },
+  "optionLabel": { "message": "Opción" },
+  "areaLabel": { "message": "Área" },
   "hintsToRecongnizeLabel": { "message": "Consellos para recoñecer a ligazón a omitir" },
   "hintsToRecongnizeCaptionLabel": { "message": "Separados por ','" },
 
@@ -38,7 +39,7 @@
   "donationCaptionLabel": { "message": "Grazas por empregar o Link Analyzer. O seu apoio será un gran estímulo, para continuar desenvolvendo o engadido.<br> Se lle gusta o Link Analyzer, estarei satisfeito se considera facer unha doazón." },
   "addonPageLabel": { "message": "Páxina do engadido" },
   "addonUrl": {
-          "message": "https:\/\/addons.mozilla.org\/en-US\/firefox\/addon\/link-analyer\/?src=optionpage"
+          "message": "https:\/\/addons.mozilla.org\/en-US\/firefox\/addon\/link-analyzer\/?src=optionpage"
       },
 
   "errorCheck": { "message": "Fallou o Link analyzer" },
@@ -52,7 +53,7 @@
   "linksBrokenPopup": { "message": "A ligazón devolveu o código 404 ou outro non pode conquerir." },
   "linksTimeOutPopup": { "message": "A ligazón tivo {secondsTimeOut} segundos para abrir e devolver a cabeceira. Pero non o fixo." },
   "linksInvalidPopup": { "message": "A ligazón non devolveu ningunha cabeceira válida. Ou o servidor está caído, ou está redirixido a un protocolo diferente dos válidos." },
-  "linksSkippedPopup": { "message": "A ligazón non foi probada. Pode que sexa unha áncora a esta páxina («#»), ou javascript, etc." },
+  "linksSkippedPopup": { "message": "A ligazón non foi probada. Pode que sexa unha áncora a esta páxina (#), ou javascript, etc." },
 
   "seconds": { "message": "segundos" },
   "restoreDefaultValues": { "message": "Restaurar valores predeterminados" }

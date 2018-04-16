@@ -462,7 +462,7 @@ linkAnalyzer.popup = {
 		linkAnalyzer.css ( stats , { position: "fixed",
 					top: "100px",
 					left: "30%",
-					width: "470px",
+					width: "570px",
 					height: "315px",
 					zIndex: "100",
 					background: "#fff",
@@ -475,7 +475,155 @@ linkAnalyzer.popup = {
 					"overflow-y": "auto" });
 		
 		var secondsTimeOut = linkAnalyzer.pref.secondsTimeOut;
-		var statistics = 
+		var element;
+		var content;
+		var styleH2;
+		var styleSup;
+		var sup;
+		var line;
+
+		styleH2 = "font-size: 20px; color: #000; font-weight: bold; padding-bottom: 5px; margin-bottom: 5px;";
+
+		element = document.createElement("H2");
+		element.style.cssText = styleH2
+
+		content = document.createTextNode(browser.i18n.getMessage("extensionName"));
+		element.appendChild(content);
+		stats.appendChild(element);
+
+		styleSup = "color: #666666; font-size: 10px";
+
+		line = document.createElement("P");
+
+		// Links Fine
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("1");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage('linksFineLabel') + ": " + linkAnalyzer.statistics.linkFine.length );
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+		// Links Broken
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("2");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage("linksBrokenLabel") + ": " + linkAnalyzer.statistics.linkBroken.length );
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+
+		// Links Time Out
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("3");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage("linksTimeOutLabel") + ": " + linkAnalyzer.statistics.linkTimeOut.length );
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+		// Links Invalid
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("4");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage("linksInvalidLabel") + ": " + linkAnalyzer.statistics.linkInvalid.length );
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+		stats.appendChild(line);
+
+		// Links Skipped
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("5");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage("linksSkippedLabel") + ": " + linkAnalyzer.statistics.linkSkipped.length );
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+		stats.appendChild(line);
+
+		line = document.createElement("P");
+		content = document.createTextNode(browser.i18n.getMessage("testDuration") + ": " + linkAnalyzer.statistics.diff + " " + browser.i18n.getMessage("seconds"));
+		line.appendChild(content);
+
+		stats.appendChild(line);
+
+		// legends
+		line = document.createElement("P");
+		
+		// Links Fine
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("1");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage("linksFinePopup"));
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+		// Links Broken
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("2");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage("linksBrokenPopup"));
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+
+		// Links Time Out
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("3");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage("linksTimeOutPopup").replace("{secondsTimeOut}", linkAnalyzer.pref.secondsTimeOut));
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+		// Links Invalid
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("4");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage("linksInvalidPopup"));
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+		stats.appendChild(line);
+
+		// Links Skipped
+		sup = document.createElement("SUP");
+		sup.style.cssText = styleSup
+		content = document.createTextNode("5");
+		sup.appendChild(content);
+
+		line.appendChild(sup);
+		content = document.createTextNode(browser.i18n.getMessage("linksSkippedPopup"));
+		line.appendChild(content);
+		line.appendChild(document.createElement("BR"));
+
+		stats.appendChild(line);
+		/*
 		stats.innerHTML = "<h2 style=\"font-size: 20px; color: #000; font-weight: bold; text-decoration: underline; padding-bottom: 5px; margin-bottom: 5px;\">" + browser.i18n.getMessage("extensionName") + "</h2>" +
 						  "<p>" +
 						  "<sup style=\"color: #666666; font-size: 10px\">1</sup> " + browser.i18n.getMessage('linksFineLabel') + ": " + linkAnalyzer.statistics.linkFine.length 	+ "<br />" +
@@ -484,22 +632,36 @@ linkAnalyzer.popup = {
 						  "<sup style=\"color: #666666; font-size: 10px\">4</sup> " + browser.i18n.getMessage("linksInvalidLabel") + ": " + linkAnalyzer.statistics.linkInvalid.length  + "<br />" +
 						  "<sup style=\"color: #666666; font-size: 10px\">5</sup> " + browser.i18n.getMessage("linksSkippedLabel") + ": " + linkAnalyzer.statistics.linkSkipped.length 	+ "</p>" +
 						  "<p>" + browser.i18n.getMessage("testDuration") + ": " + linkAnalyzer.statistics.diff + " " + browser.i18n.getMessage("seconds") + "</p>";
-		// let's explain what is what
+
+						  // let's explain what is what
 		stats.innerHTML += "<p style=\"color: #666666; font-size: 10px\">" +
 						   "<sup>1</sup> " + browser.i18n.getMessage("linksFinePopup") + "<br />" +
 						   "<sup>2</sup> " + browser.i18n.getMessage("linksBrokenPopup") + "<br />" +
 						   "<sup>3</sup> " + browser.i18n.getMessage("linksTimeOutPopup").replace("{secondsTimeOut}", linkAnalyzer.pref.secondsTimeOut) + "<br />" +
 						   "<sup>4</sup> " + browser.i18n.getMessage("linksInvalidPopup") + "<br />" + 
 						   "<sup>5</sup> " + browser.i18n.getMessage("linksSkippedPopup") + "<br /></p>";
-						   
+*/						   
 		// show broken link if exists
 		if (linkAnalyzer.statistics.linkBroken.length > 0) {		
-			stats.innerHTML += "<h2 style=\"font-size: 20px; color: #000; font-weight: bold; text-decoration: underline; padding-bottom: 5px; margin-bottom: 5px;\">" + browser.i18n.getMessage("linksBrokenLabel") + "</h2><p>";
+			//stats.innerHTML += "<h2 style=\"font-size: 20px; color: #000; font-weight: bold; text-decoration: underline; padding-bottom: 5px; margin-bottom: 5px;\">" + browser.i18n.getMessage("linksBrokenLabel") + "</h2><p>";
+			styleH2 = "color: #000; font-weight: bold; padding-bottom: 5px; margin-bottom: 5px;";
+			element = document.createElement("H2");
+			element.style.cssText = styleH2
+			content = document.createTextNode(browser.i18n.getMessage("linksBrokenLabel"));
+			element.appendChild(content);
+		
+			stats.appendChild(element);
+
+			line = document.createElement("P");
 			// loop through each broken links
 			for (var i = 0; i < linkAnalyzer.statistics.linkBroken.length; i++) {
-				stats.innerHTML += "<b>" + (linkAnalyzer.statistics.linkBroken[i].innerHTML || linkAnalyzer.attr (linkAnalyzer.statistics.linkBroken[i], "alt")).replace("<", "&lt;").replace(">", "&gt;") + "</b><br />";				
+				//stats.innerHTML += "<b>" + (linkAnalyzer.statistics.linkBroken[i].innerHTML || linkAnalyzer.attr (linkAnalyzer.statistics.linkBroken[i], "alt")).replace("<", "&lt;").replace(">", "&gt;") + "</b><br />";				
+				content = document.createTextNode((linkAnalyzer.statistics.linkBroken[i].innerHTML || linkAnalyzer.attr (linkAnalyzer.statistics.linkBroken[i], "alt")).replace("<", "&lt;").replace(">", "&gt;"));
+				line.appendChild(content);
+				line.appendChild(document.createElement("BR"));
 			}
-			stats.innerHTML += "</p>";
+			//stats.innerHTML += "</p>";
+			stats.appendChild(line);
 		}
 	},
 	
