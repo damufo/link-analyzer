@@ -1,6 +1,15 @@
 
+Version 2.0.1 - 2018-11-20
+Add pull request Smile4ever
+  Fix null check on additional (null check didn't work)
+  Add semicolons after styleSup
+  getHeight and getWidth didn't do a good job, cleanup and improve
+  => getHeight didn't work with scrollable surfaces - tested on Linux, getWidth had probably the same problem. clientHeight is currently visible area, not possibly visible area
+  -moz-border-radius was deprecated, it's now simply border-radius
+  Fix typo
+  Add TODO about 302 redirects
 
-Version 2.0 - 2018-04-15
+Version 2.0.0 - 2018-04-15
 Add analysis for local files file://
 Add localization
 Removed option dynamic navigation
