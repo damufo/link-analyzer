@@ -199,12 +199,12 @@ linkAnalyzer = {
 	},	
 	
 	// this function will handle any results - styling link, chaning colors, titles, etc
-	handler: function (r, el) {
+	handler: function (r, el, status) {
 		var color = linkAnalyzer.pref[r];
 		
 		// add this to it's appropriate statistic array
 		linkAnalyzer.statistics[r].push(el);
-		linkAnalyzer.attr(el, "title", "This link was marked as \"" + r + "\"");		
+		linkAnalyzer.attr(el, "title", "This link was marked as \"" + r + "\"" + " (code " + status + ")");
 		
 		// and last, let's check if we didn't check all links already
 		var temp = linkAnalyzer.statistics.linkFine.length + 
@@ -300,11 +300,31 @@ linkAnalyzer = {
 		
 		xml.onreadystatechange = function() {
         	if ( xml.readyState == 4 && !requestDone ) {
-				console.log("xml.status" + xml.status);
 				// responds with status between 200 and 300 are good, 0 means localhost or redirect, otherwise broken
-				var response = ( xml.status >= 200 && xml.status < 300 ) ? "linkFine" : ( xml.status != 0 ) ? "linkBroken" : "linkInvalid";
+				let betweenValidRange = xml.status >= 200 && xml.status < 300;
+
+				let response = "";
+
+				if (betweenValidRange) {
+					response = "linkFine";
+				}else{
+					response = "linkBroken";
+				}
+
+				// TODO: 302 redirects are suspicious, we should mark them as suspicious / doubtful
+				/*if (xml.status == 302) {
+					response = "linkDoubt";
+				}*/
+
+				if (xml.status == 0){
+					response = "linkInvalid";
+				}
+
+				// Extras
+				response = xml.responseURL.includes("404") ? "linkBroken" : response;
+
 				// now let's color link according to this response
-				linkAnalyzer.handler (response, el);				
+				linkAnalyzer.handler (response, el, xml.status);
 				// finish this request
 				requestDone = true;
 				// empty 'xml' object
@@ -312,11 +332,10 @@ linkAnalyzer = {
         	}
     	};
 		
-		xml.open("HEAD", url , true);		
+		xml.open("HEAD", url, true);
 		//xml.send(null);
 		xml.withCredentials = true; 
 		xml.send();
-		console.log("xml.status");
 	},
 	
 	// checking function, can be called from context menu
@@ -443,8 +462,8 @@ linkAnalyzer.popup = {
 		overlay.addEventListener("click", function () { 
 			linkAnalyzer.popup.fadeOut ( overlay, 0, 4 );
 			linkAnalyzer.popup.fadeOut ( stats, 0, 4 );
-			// if there are any broken links, then there is "additiona" window
-			if (additional) {
+			// if there are any broken links, then there is "additional" window
+			if (additional != null) {
 				linkAnalyzer.popup.fadeOut ( additional, 0, 4 );
 			}
 		}, false);
@@ -457,7 +476,7 @@ linkAnalyzer.popup = {
 		window.top.document.body.appendChild ( stats );
 		// set CSS
 		// first we will make it rounded - i have not figured out how to put this into .css() function, because of "-" at the beginning :((
-		linkAnalyzer.attr( stats, "style", "-moz-Border-Radius: 1em");	
+		linkAnalyzer.attr( stats, "style", "border-radius: 1em");
 		// and now we cat adjust all other CSS		
 		linkAnalyzer.css ( stats , { position: "fixed",
 					top: "100px",
@@ -566,7 +585,7 @@ linkAnalyzer.popup = {
 		
 		// Links Fine
 		sup = document.createElement("SUP");
-		sup.style.cssText = styleSup
+		sup.style.cssText = styleSup;
 		content = document.createTextNode("1");
 		sup.appendChild(content);
 
@@ -577,7 +596,7 @@ linkAnalyzer.popup = {
 
 		// Links Broken
 		sup = document.createElement("SUP");
-		sup.style.cssText = styleSup
+		sup.style.cssText = styleSup;
 		content = document.createTextNode("2");
 		sup.appendChild(content);
 
@@ -589,7 +608,7 @@ linkAnalyzer.popup = {
 
 		// Links Time Out
 		sup = document.createElement("SUP");
-		sup.style.cssText = styleSup
+		sup.style.cssText = styleSup;
 		content = document.createTextNode("3");
 		sup.appendChild(content);
 
@@ -600,7 +619,7 @@ linkAnalyzer.popup = {
 
 		// Links Invalid
 		sup = document.createElement("SUP");
-		sup.style.cssText = styleSup
+		sup.style.cssText = styleSup;
 		content = document.createTextNode("4");
 		sup.appendChild(content);
 
@@ -613,7 +632,7 @@ linkAnalyzer.popup = {
 
 		// Links Skipped
 		sup = document.createElement("SUP");
-		sup.style.cssText = styleSup
+		sup.style.cssText = styleSup;
 		content = document.createTextNode("5");
 		sup.appendChild(content);
 
@@ -692,23 +711,24 @@ linkAnalyzer.popup = {
 	},
 	
 	getHeight: function () {
-		//return window.top.document.body.clientHeight;
+		// take the maximum viewable height, to also dim the part we don't currently see
 
-		// so, we need to get height
-		// i figured this one out like this
-		// if .body.clientHeight is lower then documentElement.clientHeight, that means we don't have a scroll bar
-		// in this case, we will dim whole screen, taking documentElement.clientHeight
-		//
-		// but if .body.clientHeight is higher, then we can scroll down and we need to take this one, to dim also that part we don't currently see
-		
-		var a = window.top.document.body.clientHeight;
-		var b = window.top.document.documentElement.clientHeight;
-		
-		return (a < b) ? b : a;
+		// https://stackoverflow.com/questions/1145850/how-to-get-height-of-entire-document-with-javascript
+		var body = document.body;
+		var html = document.documentElement;
+
+		return Math.max( body.scrollHeight, body.offsetHeight,
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
 	},
 	
 	getWidth: function() {
-		return window.top.document.body.clientWidth;
+		// take the maximum viewable width, to also dim the part we don't currently see
+
+		var body = document.body;
+		var html = document.documentElement;
+
+		return Math.max( body.scrollWidth, body.offsetWidth,
+                       html.clientWidth, html.scrollWidth, html.offsetWidth );
 	}
 };
 
@@ -735,4 +755,3 @@ browser.runtime.onMessage.addListener(request => {
   
   return Promise.resolve({response: "Rematou de comprobar"});
 });
-
