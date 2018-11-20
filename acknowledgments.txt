@@ -15,5 +15,5 @@ Version 2.0.0
         https://addons.mozilla.org/en-US/firefox/user/sienori/
         by the code base in options section
 
-Version 2.0.1
+Version 2.0.2 (2018-11-20)
 Pull request Smile4ever (https://github.com/Smile4ever)
