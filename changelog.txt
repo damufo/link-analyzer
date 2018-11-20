@@ -1,5 +1,5 @@
 
-Version 2.0.1 - 2018-11-20
+Version 2.0.2 - 2018-11-20
 Add pull request Smile4ever
   Fix null check on additional (null check didn't work)
   Add semicolons after styleSup
