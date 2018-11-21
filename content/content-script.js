@@ -204,7 +204,8 @@ linkAnalyzer = {
 		
 		// add this to it's appropriate statistic array
 		linkAnalyzer.statistics[r].push(el);
-		linkAnalyzer.attr(el, "title", "This link was marked as \"" + r + "\"" + " (code " + status + ")");
+		let codeText = status != null ? " (code " + status + ")" : "";
+		linkAnalyzer.attr(el, "title", "This link was marked as \"" + r.replace("link", "").toLowerCase() + "\"" + codeText);
 		
 		// and last, let's check if we didn't check all links already
 		var temp = linkAnalyzer.statistics.linkFine.length + 
@@ -321,7 +322,7 @@ linkAnalyzer = {
 				}
 
 				// Extras
-				response = xml.responseURL.includes("404") ? "linkBroken" : response;
+				response = xml.responseURL.includes("404") && !xml.url.includes("404") ? "linkBroken" : response;
 
 				// now let's color link according to this response
 				linkAnalyzer.handler (response, el, xml.status);
@@ -333,8 +334,8 @@ linkAnalyzer = {
     	};
 		
 		xml.open("HEAD", url, true);
-		//xml.send(null);
 		xml.withCredentials = true; 
+		xml.url = url;
 		xml.send();
 	},
 	
