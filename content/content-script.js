@@ -321,8 +321,11 @@ linkAnalyzer = {
 				}
 
 				// Extras
-				response = xml.responseURL.includes("404") ? "linkBroken" : response;
-
+				//response = xml.responseURL.includes("404") ? "linkBroken" : response;
+				response = xml.status == 404 ? "linkBroken" : response;
+			   // console.log("responseURL: ", xml.responseURL)
+			   // console.log("status: ", xml.status)
+			   // console.log("statusText: ", xml.statusText)
 				// now let's color link according to this response
 				linkAnalyzer.handler (response, el, xml.status);
 				// finish this request
@@ -463,9 +466,9 @@ linkAnalyzer.popup = {
 			linkAnalyzer.popup.fadeOut ( overlay, 0, 4 );
 			linkAnalyzer.popup.fadeOut ( stats, 0, 4 );
 			// if there are any broken links, then there is "additional" window
-			if (additional != null) {
-				linkAnalyzer.popup.fadeOut ( additional, 0, 4 );
-			}
+			//if (additional != null) {
+			//	linkAnalyzer.popup.fadeOut ( additional, 0, 4 );
+			//}
 		}, false);
 		
 		// Screen is in cool black 
